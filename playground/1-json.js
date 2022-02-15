@@ -10,4 +10,10 @@ const fs = require("fs");
 const dataBuffer = fs.readFileSync("1-json.json");
 const datajson = dataBuffer.toString();
 const data = JSON.parse(datajson);
-console.log(data);
+
+data.title = "King of the Ocean";
+data.author = "Ramm Charan";
+//console.log(data);
+
+const djs = JSON.stringify(data);
+fs.writeFileSync("1-json.json", djs);

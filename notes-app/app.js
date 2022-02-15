@@ -1,7 +1,8 @@
 const validator = require("validator");
 const chakl = require("chalk");
-const getnote = require("./notes.js");
+const note = require("./notes.js");
 const yargs = require("yargs");
+const notes = require("./notes.js");
 
 // const fs = require('fs')
 // fs.appendFileSync('notes.txt', 'I live in Goa!!!')
@@ -35,16 +36,22 @@ yargs.command({
     },
   },
   handler: function (argv) {
-    console.log("Adding new note", argv.title);
-    console.log("adding new note", argv.body);
+    note.addNote(argv.title, argv.body);
   },
 });
 
 yargs.command({
   command: "remove",
   describe: "reove a new note",
-  handler: function () {
-    console.log("removing note");
+  builder: {
+    title: {
+      describe: "No Body",
+      demandOption: true,
+      type: "string",
+    },
+  },
+  handler: function (argv) {
+    notes.removeNote(argv.title);
   },
 });
 yargs.command({
