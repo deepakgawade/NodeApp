@@ -20,7 +20,7 @@ const saveNotes = function (notes) {
   fs.writeFileSync("notes.json", dataJson);
 };
 
-const loadnotes = function () {
+const loadnotes = () => {
   try {
     const databuffer = fs.readFileSync("notes.json");
     const dataJSON = databuffer.toString();
