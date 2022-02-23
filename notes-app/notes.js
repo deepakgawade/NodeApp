@@ -44,4 +44,18 @@ const reoveNotes = function (title) {
     console.log(chalk.red.inverse("No nodes removed!"));
   }
 };
-module.exports = { getnote: getnote, addNote: addNote, removeNote: reoveNotes };
+
+const listnotes = () => {
+  const notes = loadnotes();
+  console.log(chalk.inverse("Your notes"));
+  notes.forEach((note) => {
+    console.log(note.title);
+  });
+};
+
+module.exports = {
+  getnote: getnote,
+  addNote: addNote,
+  removeNote: reoveNotes,
+  listnotes: listnotes,
+};
