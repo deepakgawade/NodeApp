@@ -7,12 +7,20 @@ const getnote = function () {
 
 const addNote = function (title, body) {
   const notes = loadnotes();
-
-  notes.push({
-    title: title,
-    body: body,
+  const duplicateNote = notes.find(function (note) {
+    return note.title === title;
   });
-  saveNotes(notes);
+
+  if (duplicateNote === undefined) {
+    notes.push({
+      title: title,
+      body: body,
+    });
+    saveNotes(notes);
+    console.log(chalk.green.inverse("New note added"));
+  } else {
+    console.log(chalk.red.inverse("Note title taken!"));
+  }
 };
 
 const saveNotes = function (notes) {
@@ -58,4 +66,5 @@ module.exports = {
   addNote: addNote,
   removeNote: reoveNotes,
   listnotes: listnotes,
+  readNote: this.readNote,
 };
