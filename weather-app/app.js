@@ -3,7 +3,6 @@ const forecast = require("./forecast");
 var API_KEY = "5fd2b18518fd014e54a46bc68d82682f";
 
 //var address = "India";
-
 const myargs = process.argv.slice(2);
 console.log(myargs);
 
