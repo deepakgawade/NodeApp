@@ -1,5 +1,7 @@
 {
-  "dependencies": {},
+  "dependencies": {
+    "axios": "^0.26.1"
+  },
   "name": "weather-app",
   "version": "1.0.0",
   "main": "app.js",
