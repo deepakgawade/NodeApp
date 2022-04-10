@@ -1,6 +1,8 @@
+var axios = require("axios");
+
 var API_KEY = "5fd2b18518fd014e54a46bc68d82682f";
 
-const forecast = () => {
+const forecast = (lat, lon) => {
   axios
     .get(
       "https://api.openweathermap.org/data/2.5/weather?lat=" +
@@ -27,3 +29,5 @@ const forecast = () => {
       console.log("successfuly executed");
     });
 };
+
+module.exports = forecast;
