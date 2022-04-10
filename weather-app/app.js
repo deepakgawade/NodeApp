@@ -10,14 +10,9 @@ axios
     "https://api.mapbox.com/geocoding/v5/mapbox.places/Los%20Angeles.json?access_token=pk.eyJ1IjoiZGVlcGFrZ2F3YWRlMjIiLCJhIjoiY2wxczU0eDl5MDBvMDNqcXpuM3FzengxZCJ9.pjXojj5HkIVnpfZVoQ5VoQ"
   )
   .then(function (response) {
-    // var data = JSON.parse(response);
     console.log(response.data.features[0].center);
-    lat = response.data.features[0].center[0];
-    lon = response.data.features[0].center[1];
-    // var degree = response.data.main.temp - 273.15;
-    // console.log(
-    //   "It looks like " + parseFloat(degree).toFixed(2) + " degree outside"
-    // );
+    lat = response.data.features[0].center[1];
+    lon = response.data.features[0].center[0];
 
     //to fetch temperatuer at above mention place
     axios
@@ -34,7 +29,9 @@ axios
         console.log(response.data.main.temp);
         var degree = response.data.main.temp - 273.15;
         console.log(
-          "It looks like " + parseFloat(degree).toFixed(2) + " degree outside"
+          "It looks like " +
+            parseFloat(degree).toFixed(2) +
+            " degree outside in loss angeles"
         );
       })
       .catch(function (error) {
