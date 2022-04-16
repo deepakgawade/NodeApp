@@ -1,6 +1,29 @@
-h1 {
-  color: aquamarine;
-}
 img {
-  width: 250px;
+  width: 500px;
+}
+body {
+  color: #333333;
+  font-family: Arial, Helvetica, sans-serif;
+  max-width: 650px;
+  margin: 0, auto;
+  padding: 0, 16px;
+}
+footer {
+  color: #888888;
+  border-top: 1px solid #334345;
+  margin-top: 16px;
+  padding: 10px;
+}
+header {
+  margin-top: 16px;
+  margin-bottom: 48px;
+}
+h1 {
+  font-size: 64px;
+  margin-bottom: 10px;
+}
+header a {
+  color: #888888;
+  margin-right: 16px;
+  text-decoration: none;
 }
