@@ -5,18 +5,23 @@ const app = express();
 console.log(__dirname);
 console.log(path.join(__dirname, "../public"));
 const filepath = path.join(__dirname, "../public");
+
+app.set("view engine", "hbs");
 app.use(express.static(filepath));
 
 app.get("", (req, res) => {
-  res.send("Hello Express");
+  res.render("index", { title: "Mark the sun", author: "Dwayne Johnson" });
 });
 
 app.get("/about", (req, res) => {
-  res.send("<h1>We are the node js developer</h1>");
+  res.render("about", { company: "cosmos", author: "Dwayne Johnson" });
 });
 
-app.get("/Home", (req, res) => {
-  res.send({ name: "Deepak", age: 25 });
+app.get("/help", (req, res) => {
+  res.render("help", {
+    name: "Dwayne Johnson",
+    email: "dwaynejohnson@hotmail.com",
+  });
 });
 
 app.listen(4000, (req, res) => {
