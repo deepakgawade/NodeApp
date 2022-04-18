@@ -1,5 +1,7 @@
 const express = require("express");
 const path = require("path");
+const geocode = require("./utils/geocode");
+const forecast = require("./utils/forecast");
 
 const hbs = require("hbs");
 
@@ -20,7 +22,7 @@ hbs.registerPartials(partialPath);
 
 //default route
 app.get("", (req, res) => {
-  res.render("index", { title: "Mark the sun", author: "Dwayne Johnson" });
+  res.render("index", { title: "Weather", author: "Dwayne Johnson" });
 });
 
 //about route
@@ -39,6 +41,30 @@ app.get("/help", (req, res) => {
 //route to handel errors
 app.get("/help/*", (req, res) => {
   res.render("error", { errorText: "Help page not found" });
+});
+
+//help route
+app.get("/products", (req, res) => {
+  var tempData;
+  if (!req.query.search) {
+    return res.send({ error: "Please provide string for search" });
+  }
+
+  geocode(req.query.search, (error, data) => {
+    if (error) {
+      res.send({ error: error });
+      return;
+    }
+    //forecast(22.1991660760527, 78.476681027237);
+    forecast(data[1], data[0], (error, data) => {
+      console.log(req.query);
+      res.send({
+        location: req.query.search,
+        forecast: "Sunny",
+        temparature: data,
+      });
+    });
+  });
 });
 
 //route to handel errors
